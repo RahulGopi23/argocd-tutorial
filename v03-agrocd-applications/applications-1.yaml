@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: applications-from-scratch
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      releaseName: application-from-helm
+      valueFiles:
+        - custom-values.yaml
+    path: v03-agrocd-applications/helm/nginx
+    repoURL: https://github.com/RahulGopi23/argocd-tutorial.git 
+    targetRevision: main
+ 
